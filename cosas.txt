@@ -30,3 +30,5 @@ async def logout(request):
         return redirect("/login")
         # return HttpResponse("<h1>Page was found</h1>")
         # return render(request, 'pages/home.html')
+
+path('logout', trackin.logout, name='logout'),
