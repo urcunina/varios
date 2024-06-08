@@ -1,0 +1,18 @@
+
+views
+
+
+context={
+         'lista':'asdsdsda',
+         }
+return render(request, 'pages/pagos.html', context)
+
+
+
+
+html 
+
+
+{% autoescape off %}
+  {{ lista_tecnicos }}
+{% endautoescape %}  
