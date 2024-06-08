@@ -14,5 +14,5 @@ html
 
 
 {% autoescape off %}
-  {{ lista_tecnicos }}
+  {{ lista }}
 {% endautoescape %}  
