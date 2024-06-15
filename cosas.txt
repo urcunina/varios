@@ -71,4 +71,4 @@ auser=await aauthenticate(username=username,password=password)
 if auser is not None:   
 await alogin(request,auser)  
 
-from django.contrib.auth import alogin, alogout---------------------
+from django.contrib.auth import alogin, alogout
