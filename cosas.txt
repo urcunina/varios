@@ -62,3 +62,7 @@ def agrega_corrdenadas(request):
                         return JsonResponse(context)
 
 request.user.username
+
+
+from django.contrib.auth.decorators import login_required
+@login_required(redirect_field_name="")
