@@ -32,3 +32,31 @@ async def logout(request):
         # return render(request, 'pages/home.html')
 
 path('logout', trackin.logout, name='logout'),
+
+from django.http import JsonResponse
+
+### Función  agrega corrdenadas
+
+def agrega_corrdenadas(request):                                                 
+        if request.method == 'GET':
+                try:    
+                        longitud = request.GET.get('longitud',"")
+                        latitud = request.GET.get('latitud',"")
+                                                         
+                        if longitud!='' and latitud!='':
+                                context= {
+                                        'mensaje':'Las coordenadas se registraron de manera satisfactoria',
+
+                                }
+                                return JsonResponse(context)
+                        else:
+                                context= {
+                                        'mensaje':'Las coordenadas NO se registraron de manera satisfactoria',
+
+                                }
+                                return JsonResponse(context)
+                except:
+                        context= {
+                                'mensaje':"Error en la función agrega_corrdenadas ",
+                        }
+                        return JsonResponse(context)
