@@ -72,3 +72,14 @@ if auser is not None:
 await alogin(request,auser)  
 
 from django.contrib.auth import alogin, alogout
+
+if (username is not None) and (password is not None ):
+   auser=await aauthenticate(username=username,password=password)   
+   if auser is not None:   
+       await alogin(request,auser)   
+       return redirect("/home")
+   else:
+       context= {
+       'message': "Nombre de usuario o contraseña incorrecta",
+       }
+       return render(request, 'pages/login.html', context)
