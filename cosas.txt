@@ -66,3 +66,7 @@ request.user.username
 
 from django.contrib.auth.decorators import login_required
 @login_required(redirect_field_name="")
+
+auser=await aauthenticate(username=username,password=password)   
+if auser is not None:   
+await alogin(request,auser)  
