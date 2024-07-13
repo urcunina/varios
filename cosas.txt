@@ -129,3 +129,27 @@ DATABASES = {
 
 https://we.tl/t-m4LIbHNZSY
 
+# Actualiza estado 
+def update_ultimo_estado(entity,value):
+        try:
+                # Actualiza campo estado
+                ContextDataJSON={"ultimo_estado": {
+                                "value": str(value),
+                                "type": "String"
+                                }
+                                }
+
+                # url='http://'+IP_Orion+':'+Port_Orion+'/v2/entities/'+entity+'/attrs/'+'estado'+'/value'
+                url='http://'+IP_Orion+':'+Port_Orion+'/v2/entities/'+entity+'/attrs/'
+                # headers={"Content-Type":"text/plain"} 
+                headers={"Accept":"application/json"}       
+                # response=requests.put(url,headers=headers,json=str(value))
+                response=requests.post(url,headers=headers,json=ContextDataJSON)
+                print(response.text)
+                if (response.status_code) == 204:
+                        return "El estado fue asignado"
+                else :
+                        return "El estado NO pudo ser actualizado"
+        except:
+                return "El estado NO pudo ser actualizado"
+
