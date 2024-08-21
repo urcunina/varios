@@ -1,0 +1,17 @@
+import requests
+import csv
+import datetime 
+import pandas as pd
+import random
+import time
+import json
+
+IP_Orion="192.168.43.173"
+Port_Orion="1026"
+
+# Get version
+def version():
+    url='http://'+IP_Orion+':'+Port_Orion+'/version'
+    response=requests.get(url)
+    print(response.status_code)
+    print(response.content) 
