@@ -15,3 +15,40 @@ def version():
     response=requests.get(url)
     print(response.status_code)
     print(response.content) 
+
+# Consulta una entidad específica
+def consulta_entiti(entidad):
+    url='http://'+IP_Orion+':'+Port_Orion+'/v2/entities/'+entidad
+    headers={"Accept":"application/json"}
+    response=requests.get(url,headers=headers)
+    print(response.status_code)
+    response=response.content.decode("utf-8").replace("'", '"')
+    response_JSON=json.loads(response)
+    print(response_JSON)
+
+# Crea entidad juego
+def crea_entidad_juego(nombre,year,fabricante):
+                ContextDataJSON={"id": nombre,
+                                "type": "juego",
+
+                                "year": {
+                                "value": year,
+                                "type": "integer"
+                                },
+                                "fabricante": {
+                                "value": fabricante,
+                                "type": "String"
+                                }
+                                }
+                
+                # ContextDataJSON['id']='abono_'+str(servicio)  # Nombre de la entidad abono abono_servicio_+randit()
+                url='http://'+IP_Orion+':'+Port_Orion+'/v2/entities'
+                headers={"Accept":"application/json"}
+                response= requests.post(url,headers=headers,json=ContextDataJSON) 
+                # print(response.status_code)
+                if (response.status_code) == 201:
+                    print('Entidad creada satisfactoriamente')
+                    return 
+                else:
+                    print('La entidad ya existe')
+                    return 
